@@ -6,8 +6,8 @@ in order to optomize how often users are studying certain terms.
 
 ## Importing and Viewing Decks
 
-<img src="https://i.ibb.co/zQSvSr9/IMG-5223.jpg" align="left" width=25%>
-<img src="https://i.ibb.co/VSST6dS/IMG-5224.jpg" align="right" width=25%> 
+<img src="https://i.ibb.co/zQSvSr9/IMG-5223.jpg" align="left" width=225>
+<img src="https://i.ibb.co/VSST6dS/IMG-5224.jpg" align="right" width=225> 
 
 ### Importing
 
@@ -23,8 +23,8 @@ will be navigated away to a new screen where you can begin studying cards.
 
 ## Studying Decks
 
-<img src="https://i.ibb.co/5rP74v9/IMG-5226.jpg" align="left" width=25%>
-<img src="https://i.ibb.co/19xJ24k/IMG-5225.jpg" align="right" width=25%> 
+<img src="https://i.ibb.co/5rP74v9/IMG-5226.jpg" align="left" width=225>
+<img src="https://i.ibb.co/19xJ24k/IMG-5225.jpg" align="right" width=225> 
 
 ### Studying
 
