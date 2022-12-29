@@ -7,7 +7,7 @@ in order to optomize how often users are studying certain terms.
 ## Importing and Viewing Decks
 
 <img src="https://i.ibb.co/zQSvSr9/IMG-5223.jpg" align="left" width=225>
-<img src="https://i.ibb.co/VSST6dS/IMG-5224.jpg" align="right" width=225> 
+<img src="https://i.ibb.co/yBSdh5w/IMG-5228.jpg" align="right" width=225> 
 
 ### Importing
 
@@ -49,3 +49,7 @@ database is vital for the program to work, the AsyncStorage has no direct contri
 
 
 To run, make sure to install all necessary dependencies, and run __npm start__ in the terminal.
+
+## Assets
+
+Assets for this project were generated using Adobe Express' Logo Maker.
