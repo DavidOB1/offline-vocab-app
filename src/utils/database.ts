@@ -1,6 +1,6 @@
 import { openDatabase } from "expo-sqlite";
-import { QuizletCard } from "./quizlet-scraper";
 import SQLStatements from "./sql-statements";
+import { Deck, QuizletCard } from "./types";
 
 // Opens/initializes the database and exports it for other files to use
 export const db = openDatabase("study-cards.db");
@@ -15,24 +15,30 @@ const quizletCardToSQLArray = (card: QuizletCard, id: number) => {
 };
 
 // An asyncronous function which adds an array of QuizletCards into the local database under
-// a new set with the given name
-export const addCardSet = async ({ cards, setName }: { cards: QuizletCard[]; setName: string }) => {
+// a new set with the given name, and returns a Deck object with information about the new deck
+export const addCardSet = async ({
+  cards,
+  setName,
+}: {
+  cards: QuizletCard[];
+  setName: string;
+}): Promise<Deck> => {
   const newID: number = await new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
         SQLStatements.getHighestID,
         [],
         (_, { rows }) => {
-          const id = rows._array[0].maxID + 1;
+          const id = rows._array[0].maxID;
           if (typeof id !== "number") {
             reject("Undefined ID");
           } else {
-            resolve(id);
+            resolve(id + 1);
           }
         },
         (error) => {
           reject(error);
-          return false;
+          return true;
         }
       );
     });
@@ -50,4 +56,6 @@ export const addCardSet = async ({ cards, setName }: { cards: QuizletCard[]; set
       () => resolve(undefined)
     );
   });
+
+  return { id: newID, name: setName };
 };

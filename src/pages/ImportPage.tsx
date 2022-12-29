@@ -13,7 +13,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { addCardSet } from "../utils/database";
-import getQuizletCards, { QuizletCard } from "../utils/quizlet-scraper";
+import getQuizletCards from "../utils/quizlet-scraper";
+import { QuizletCard } from "../utils/types";
 
 // The page which allows the user to import decks from Quizlet
 const ImportPage = () => {

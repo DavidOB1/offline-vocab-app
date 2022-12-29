@@ -41,7 +41,7 @@ const Home = () => {
         <Text style={styles.greetingText}>{greeting}</Text>
         <View style={styles.notesContainer}>
           <View style={styles.notesHeader}>
-            <Text style={{ ...styles.text, textDecorationLine: "underline" }}>Today's Notes</Text>
+            <Text style={{ ...styles.text, fontWeight: "bold" }}>Today's Notes</Text>
             <View style={styles.readOnlyBox}>
               <Text style={{ ...styles.text, fontSize: 14 }}>Read Only</Text>
               <Switch
@@ -55,7 +55,6 @@ const Home = () => {
             editable={!readOnly}
             style={{ ...styles.textInput, backgroundColor: readOnly ? "#D4D4D4" : "#f5f5f5" }}
             multiline={true}
-            numberOfLines={6}
             placeholder={readOnly ? "" : "Type notes here..."}
             value={notesText}
             onChangeText={(text) => setNotesText(text)}

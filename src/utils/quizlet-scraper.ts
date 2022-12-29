@@ -1,12 +1,6 @@
 import axios from "axios";
 import cheerio, { CheerioAPI } from "cheerio";
-
-// A type representing data of a card from a Quizlet set
-export type QuizletCard = {
-  num: number;
-  term: string;
-  definition: string;
-};
+import { QuizletCard } from "./types";
 
 // An asynchronous function which returns an array of QuizletCards corresponding
 // to the study set at the given link

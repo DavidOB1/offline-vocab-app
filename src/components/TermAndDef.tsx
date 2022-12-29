@@ -1,26 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
-import { CardData } from "../pages/DeckInfo";
+import { CardData } from "../utils/types";
 
 // A component for displaying a term and definition of a card
 const TermAndDef = ({ card, showDef }: { card: CardData; showDef: boolean }) => {
   const [allowScroll, setAllowScroll] = useState(true);
-
-  // Returns the definition if the show defintion prop is true, otherwise returns an empty view
-  const getDef = () => {
-    if (showDef) {
-      return (
-        <View style={styles.defContainer}>
-          <Text style={styles.headerText}>Definition</Text>
-          <View style={{ ...styles.textContainer, width: "100%" }}>
-            <Text style={styles.innerText}>{card.definition}</Text>
-          </View>
-        </View>
-      );
-    } else {
-      return <View />;
-    }
-  };
 
   return (
     <ScrollView
@@ -39,7 +23,14 @@ const TermAndDef = ({ card, showDef }: { card: CardData; showDef: boolean }) => 
           {card.term}
         </Text>
       </View>
-      {getDef()}
+      {showDef && (
+        <View style={styles.defContainer}>
+          <Text style={styles.headerText}>Definition</Text>
+          <View style={{ ...styles.textContainer, width: "100%" }}>
+            <Text style={styles.innerText}>{card.definition}</Text>
+          </View>
+        </View>
+      )}
     </ScrollView>
   );
 };
@@ -62,7 +53,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#e3eae3",
+    backgroundColor: "white",
     borderRadius: 10,
   },
   innerText: {

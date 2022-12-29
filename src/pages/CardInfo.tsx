@@ -2,7 +2,7 @@ import { RouteProp } from "@react-navigation/native";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import TermAndDef from "../components/TermAndDef";
-import { StudyTabsParamList } from "../navigation/StudyPageNavigator";
+import { StudyTabsParamList } from "../utils/types";
 
 // A page which, when navigated to, displays information about a given card
 const CardInfo = ({ route }: { route: RouteProp<StudyTabsParamList, "Term"> }) => {

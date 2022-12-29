@@ -11,10 +11,9 @@ import {
 } from "react-native";
 import StatusBar from "../components/StatusBar";
 import TermAndDef from "../components/TermAndDef";
-import { StudyTabsParamList } from "../navigation/StudyPageNavigator";
 import { db } from "../utils/database";
 import SQLStatements from "../utils/sql-statements";
-import { CardData } from "./DeckInfo";
+import { CardData, StudyTabsParamList } from "../utils/types";
 
 // Compares two cards and returns an appropriate comparison integer in range [-1, 1]
 const cardSorter = (card1: CardData, card2: CardData) => {
@@ -92,11 +91,17 @@ const StudyDeck = ({ route }: { route: RouteProp<StudyTabsParamList, "Learn"> })
     [todayTime]
   );
 
+  // A function which determines if a given card has never been seen or was first seen today
+  const newCard = useCallback(
+    (card: CardData) => !card.firstStudied || card.firstStudied === todayTime,
+    [todayTime]
+  );
+
   // Initializes the list of cards to be studied once the component is initially loaded
   useEffect(() => {
     const alrCompleted = cards.filter(completedToday).length;
     reviewAmount.current = cards.filter(dueForReview).length;
-    newCardsLeft.current = cards.filter((card) => !card.firstStudied).length;
+    newCardsLeft.current = cards.filter(newCard).length;
     const newAmount = Math.max(
       0,
       Math.min(studyToday, newCardsLeft.current) + reviewAmount.current - alrCompleted
@@ -257,10 +262,9 @@ const StudyDeck = ({ route }: { route: RouteProp<StudyTabsParamList, "Learn"> })
   // otherwise, show the terms to study
   if (studyCards.length === 0) {
     return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.congrats}>
-          Congrats! 🎉🎉🎉🎉 You finished all the cards for today!
-        </Text>
+      <SafeAreaView style={{ ...styles.container, marginTop: 100 }}>
+        <Text style={styles.congrats}>Congrats! 🎉</Text>
+        <Text style={styles.congrats}>You finished all the cards for today!</Text>
       </SafeAreaView>
     );
   } else {
@@ -292,8 +296,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   congrats: {
-    marginTop: 80,
-    padding: 15,
+    padding: 20,
     fontSize: 36,
     textAlign: "center",
     fontWeight: "bold",

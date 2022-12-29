@@ -1,9 +1,11 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DeckList, { Deck } from "../pages/DeckList";
-import DeckInfo, { CardData } from "../pages/DeckInfo";
+import DeckList from "../pages/DeckList";
+import DeckInfo from "../pages/DeckInfo";
 import CardInfo from "../pages/CardInfo";
 import StudyDeck from "../pages/StudyDeck";
+import AddCard from "../pages/AddCard";
+import { StudyTabsParamList } from "../utils/types";
 
 // An enum type for the different names of the tabs
 enum StudyTabs {
@@ -11,18 +13,8 @@ enum StudyTabs {
   DeckInfo = "Info",
   CardInfo = "Term",
   StudyDeck = "Learn",
+  AddCard = "Add",
 }
-
-// A type used to define the args passed to the componenets by the navigator
-export type StudyTabsParamList = {
-  Decks: undefined;
-  Info: Deck;
-  Term: CardData;
-  Learn: {
-    cards: CardData[];
-    studyToday: number;
-  };
-};
 
 const Stack = createNativeStackNavigator<StudyTabsParamList>();
 
@@ -46,6 +38,10 @@ const StudyPageNavigator = () => {
       <Stack.Screen
         name={StudyTabs.StudyDeck}
         component={StudyDeck}
+      />
+      <Stack.Screen
+        name={StudyTabs.AddCard}
+        component={AddCard}
       />
     </Stack.Navigator>
   );

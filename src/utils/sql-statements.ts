@@ -36,6 +36,9 @@ const SQLStatements = {
         FirstStudied = ?
     WHERE SetID = ?
       and Num = ?`,
+  maxNumInDeck: `SELECT COALESCE(max(Num), 0) maxNum
+      FROM Cards
+      WHERE SetID = ?`,
 };
 
 export default SQLStatements;
