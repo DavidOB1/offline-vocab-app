@@ -15,6 +15,7 @@ import { db } from "../utils/database";
 import SQLStatements from "../utils/sql-statements";
 import { StudyTabsParamList } from "../utils/types";
 
+// A page that allows the user to add new cards to a deck
 const AddCard = ({ route }: { route: RouteProp<StudyTabsParamList, "Add"> }) => {
   const { id } = route.params;
   const [newTerm, setNewTerm] = useState("");
@@ -22,6 +23,7 @@ const AddCard = ({ route }: { route: RouteProp<StudyTabsParamList, "Add"> }) => 
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation<NavigationProp<StudyTabsParamList>>();
 
+  // A function which adds a new card based on the user's text input in the text input components
   const addNewCard = () => {
     if (!newTerm) {
       Alert.alert("Please enter a valid term.");
