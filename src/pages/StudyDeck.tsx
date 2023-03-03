@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
   difficultyText: {
     color: "white",
     fontWeight: "600",
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "center",
   },
 });
