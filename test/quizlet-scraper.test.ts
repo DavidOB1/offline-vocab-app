@@ -1,5 +1,6 @@
 import getQuizletCards from "../src/utils/quizlet-scraper";
 
+
 test("Basic use of getQuizletCards on French vocab", async () => {
   const cards = await getQuizletCards(
     "https://quizlet.com/1763426/french-family-vocab-flash-cards/"
@@ -17,6 +18,7 @@ test("Basic use of getQuizletCards on French vocab", async () => {
   expect(cards[14].definition).toEqual("un/e parent/e*");
 });
 
+
 test("Testing for when bad URLs are given", async () => {
   await expect(getQuizletCards("garbage")).rejects.toThrow();
   await expect(getQuizletCards("https://www.google.com/")).rejects.toThrow();
@@ -28,6 +30,7 @@ test("Testing for when bad URLs are given", async () => {
     getQuizletCards("https://quizlet.com/1763426/flashcards")
   ).rejects.toThrow();
 });
+
 
 test("Testing a small study set", async () => {
   const cards = await getQuizletCards(
@@ -48,6 +51,7 @@ test("Testing a small study set", async () => {
     },
   ]);
 });
+
 
 test("Testing set with 2,000 terms, images, and Chinese characters", async () => {
   const cards = await getQuizletCards(
@@ -72,6 +76,7 @@ test("Testing set with 2,000 terms, images, and Chinese characters", async () =>
   });
 });
 
+
 test("Ensuring the scraper works when HTML tags are in the Quizlet set", async () => {
   const cards = await getQuizletCards(
     "https://quizlet.com/6795630/html-flashcards/"
@@ -87,6 +92,7 @@ test("Ensuring the scraper works when HTML tags are in the Quizlet set", async (
     "used to define tables and table cells in a web page"
   );
 });
+
 
 test("Ensuring definitions with multiple lines work", async () => {
   const cards = await getQuizletCards(
