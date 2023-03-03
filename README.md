@@ -2,7 +2,7 @@
 
 This app allows users to download study sets off of Quizlet to a local database which then allows them to study those terms while offline, being useful 
 in situations where the user may be somewhere without a stable connection yet wants to be productive. The app also uses a variation of the Spaced Repition System
-in order to optomize how often users are studying certain terms. 
+in order to optomize how often users are studying certain terms.
 
 ## Importing and Viewing Decks
 
